@@ -34,6 +34,16 @@
       persistentKeys = true;
       settings = {
         Peers = [ "tls://213.226.68.79:14578" ];
+        MulticastInterfaces = [
+          {
+            Beacon = false;
+            Listen = false;
+            Regex = ".*";
+            Port = 0;
+            Priority = 0;
+            Password = "";
+          }
+        ];
       };
     };
 
