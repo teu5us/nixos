@@ -1,19 +1,27 @@
-{ config, pkgs, options, lib, ... }:
+{
+  config,
+  pkgs,
+  options,
+  lib,
+  ...
+}:
 
 let
-  aliases = let
-    eza = "${pkgs.eza}/bin/eza --group-directories-first";
-  in {
-    ls = "${eza}";
-    ll = "${eza} -l";
-    la = "${eza} -a";
-    lla = "${eza} -al";
-    v = "nvim";
-    mkd = "mkdir -pv";
-    diff = "diff --color=auto";
-    grep = "grep --color=auto";
-    cp = "cp -i";
-  };
+  aliases =
+    let
+      eza = "${pkgs.eza}/bin/eza --group-directories-first";
+    in
+    {
+      ls = "${eza}";
+      ll = "${eza} -l";
+      la = "${eza} -a";
+      lla = "${eza} -al";
+      v = "nvim";
+      mkd = "mkdir -pv";
+      diff = "diff --color=auto";
+      grep = "grep --color=auto";
+      cp = "cp -i";
+    };
 in
 {
   programs = {

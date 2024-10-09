@@ -1,9 +1,7 @@
 { pkgs, ... }:
 
 {
-  imports = [
-    ./fonts.nix
-  ];
+  imports = [ ./fonts.nix ];
 
   programs.hyprland.enable = true;
 

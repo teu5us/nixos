@@ -1,4 +1,10 @@
-{ pkgs, unstable, nixpkgs, nixpkgs-unstable, ... }:
+{
+  pkgs,
+  unstable,
+  nixpkgs,
+  nixpkgs-unstable,
+  ...
+}:
 
 {
   nix = {
@@ -10,8 +16,8 @@
       auto-optimise-store = true;
     };
     nixPath = [
-        "nixpkgs=${pkgs.path}"
-        "unstable=${unstable.path}"
+      "nixpkgs=${pkgs.path}"
+      "unstable=${unstable.path}"
     ];
   };
 
@@ -23,6 +29,8 @@
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    extraSpecialArgs = { inherit unstable nixpkgs nixpkgs-unstable; };
+    extraSpecialArgs = {
+      inherit unstable nixpkgs nixpkgs-unstable;
+    };
   };
 }

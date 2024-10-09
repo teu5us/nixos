@@ -6,17 +6,26 @@
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
-  
-    kernelParams = [ "quiet" "loglevel=3" "pcie_aspm=force" "usbcore.autosuspend=true" "resume_offset=119218176" ];
-    supportedFilesystems = [ "ntfs" "exfat" ];
+
+    kernelParams = [
+      "quiet"
+      "loglevel=3"
+      "pcie_aspm=force"
+      "usbcore.autosuspend=true"
+      "resume_offset=119218176"
+    ];
+    supportedFilesystems = [
+      "ntfs"
+      "exfat"
+    ];
     extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
     kernelModules = [ "v4l2loopback" ];
     extraModprobeConfig = ''
       options v4l2loopback devices=1 video_nr=1 card_label="OBS Camera" exclusive_caps=1
     '';
-  
+
     tmp.cleanOnBoot = true;
-  
+
     kernel.sysctl = {
       "net.core.default_qdisc" = "fq";
       "net.ipv4.tcp_congestioncontrol" = "bbr";
@@ -29,7 +38,7 @@
       "vm.laptop_mode" = 5;
     };
   };
-  
+
   hardware = {
     ksm.enable = true;
     opengl.enable = true;
@@ -45,7 +54,10 @@
 
   i18n = {
     defaultLocale = "en_US.UTF-8";
-    supportedLocales = [ "en_US.UTF-8/UTF-8" "ru_RU.UTF-8/UTF-8" ];
+    supportedLocales = [
+      "en_US.UTF-8/UTF-8"
+      "ru_RU.UTF-8/UTF-8"
+    ];
   };
 
   services = {

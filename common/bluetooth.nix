@@ -1,10 +1,10 @@
 { pkgs, ... }:
 
 {
-    hardware = {
-        bluetooth = {
-            enable = true;
-            package = pkgs.bluez;
-        };
+  hardware = {
+    bluetooth = {
+      enable = true;
+      package = pkgs.bluez;
     };
+  };
 }

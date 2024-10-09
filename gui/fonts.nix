@@ -3,7 +3,12 @@
 {
   fonts = {
     packages = with pkgs; [
-      (nerdfonts.override { fonts = [ "FiraCode" "Iosevka" ]; })
+      (nerdfonts.override {
+        fonts = [
+          "FiraCode"
+          "Iosevka"
+        ];
+      })
       corefonts
       dejavu_fonts
       fira-sans
