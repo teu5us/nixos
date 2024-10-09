@@ -7,12 +7,9 @@
       efi.canTouchEfiVariables = true;
     };
 
+    consoleLogLevel = 3;
     kernelParams = [
       "quiet"
-      "loglevel=3"
-      "pcie_aspm=force"
-      "usbcore.autosuspend=true"
-      "resume_offset=119218176"
     ];
     supportedFilesystems = [
       "ntfs"

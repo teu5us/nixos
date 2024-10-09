@@ -1,6 +1,12 @@
 { pkgs, ... }:
 
 {
+    boot.kernelParams = [
+      "pcie_aspm=force"
+      "usbcore.autosuspend=1"
+      "intel_pstate=active"
+    ];
+
   boot.initrd.luks.devices = {
     root = {
       device = "/dev/disk/by-label/cryptroot";
