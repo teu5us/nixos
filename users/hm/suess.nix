@@ -1,9 +1,13 @@
-{ pkgs, unstable, config, ... }:
-
+{
+  pkgs,
+  unstable,
+  config,
+  ...
+}:
 
 let
-  hyprlayout = pkgs.callPackage ./hyprlayout.nix {};
-  lz4json = pkgs.callPackage ./lz4json.nix {};
+  hyprlayout = pkgs.callPackage ./hyprlayout.nix { };
+  lz4json = pkgs.callPackage ./lz4json.nix { };
 in
 {
   nixpkgs.config.allowUnfree = true;
@@ -12,28 +16,34 @@ in
     alacritty = {
       enable = true;
       settings = {
-          window = {
-              dimensions = {
-                  lines = 40;
-                  columns = 80;
-              };
-              opacity = 0.9;
-              padding = {
-                  x = 1;
-                  y = 1;
-              };
-              dynamic_padding = true;
-              decorations = "full";
-              dynamic_title = true;
+        window = {
+          dimensions = {
+            lines = 40;
+            columns = 80;
           };
-          scrolling = {
-              history = 10000;
-              multiplier = 5;
+          opacity = 0.9;
+          padding = {
+            x = 1;
+            y = 1;
           };
-          font = { size = 12; };
-          keyboard.bindings = [
-            { key = "Return"; mods = "Control|Shift"; action = "SpawnNewInstance"; }
-          ];
+          dynamic_padding = true;
+          decorations = "full";
+          dynamic_title = true;
+        };
+        scrolling = {
+          history = 10000;
+          multiplier = 5;
+        };
+        font = {
+          size = 12;
+        };
+        keyboard.bindings = [
+          {
+            key = "Return";
+            mods = "Control|Shift";
+            action = "SpawnNewInstance";
+          }
+        ];
       };
     };
 
@@ -89,9 +99,7 @@ in
     emacs = {
       enable = true;
       package = pkgs.emacs29-pgtk;
-      extraPackages = (epkgs: with epkgs; [
-        vterm
-      ]);
+      extraPackages = (epkgs: with epkgs; [ vterm ]);
     };
 
     neovim = {
@@ -99,7 +107,10 @@ in
       package = unstable.neovim-unwrapped;
       viAlias = true;
       vimAlias = true;
-      extraPackages = with unstable; [ gcc luajitPackages.luarocks ];
+      extraPackages = with unstable; [
+        gcc
+        luajitPackages.luarocks
+      ];
     };
 
     waybar.enable = true;
@@ -114,8 +125,8 @@ in
       defaultKeymap = "viins";
       #shellAliases = aliases;
       initExtraBeforeCompInit = ''
-              fpath=(~/.config/zsh/completion $fpath)
-            '';
+        fpath=(~/.config/zsh/completion $fpath)
+      '';
       # Plugins
       plugins = [
         # sfz-prompt
@@ -135,46 +146,46 @@ in
         }
       ];
       initExtra = ''
-              # Emacs tramp fix
-              if [[ "$TERM" == "dumb" ]]
-              then
-                unsetopt zle
-                unsetopt prompt_cr
-                unsetopt prompt_subst
-                # unfunction precmd
-                # unfunction preexec
-                export PS1='$ '
-              fi
+        # Emacs tramp fix
+        if [[ "$TERM" == "dumb" ]]
+        then
+          unsetopt zle
+          unsetopt prompt_cr
+          unsetopt prompt_subst
+          # unfunction precmd
+          # unfunction preexec
+          export PS1='$ '
+        fi
 
-              bindkey '^F' autosuggest-accept
-              bindkey '^G' toggle-fzf-tab
+        bindkey '^F' autosuggest-accept
+        bindkey '^G' toggle-fzf-tab
 
-              # indicate mode by cursor shape
-              zle-keymap-select () {
-              if [ $KEYMAP = vicmd ]; then
-                  printf "\033[2 q"
-              else
-                  printf "\033[6 q"
-              fi
-                              }
-              zle-line-init () {
-                  zle -K viins
-                  printf "\033[6 q"
-                              }
-              zle-line-finish () {
-                  printf "\033[2 q"
-                              }
-              zle -N zle-keymap-select
-              zle -N zle-line-init
-              zle -N zle-line-finish
+        # indicate mode by cursor shape
+        zle-keymap-select () {
+        if [ $KEYMAP = vicmd ]; then
+            printf "\033[2 q"
+        else
+            printf "\033[6 q"
+        fi
+                        }
+        zle-line-init () {
+            zle -K viins
+            printf "\033[6 q"
+                        }
+        zle-line-finish () {
+            printf "\033[2 q"
+                        }
+        zle -N zle-keymap-select
+        zle -N zle-line-init
+        zle -N zle-line-finish
 
-              DISABLE_AUTO_TITLE="true"
+        DISABLE_AUTO_TITLE="true"
 
-              function precmd() {
-                # echo -en "\e]2;$@\a"
-                print -Pn "\e]0;%~\a"
-              }
-            '';
+        function precmd() {
+          # echo -en "\e]2;$@\a"
+          print -Pn "\e]0;%~\a"
+        }
+      '';
     };
 
     autojump.enable = true;
@@ -182,7 +193,11 @@ in
     fzf = {
       enable = true;
       defaultCommand = "fd --type f";
-      defaultOptions = [ "--height 40%" "--prompt »" "--layout=reverse" ];
+      defaultOptions = [
+        "--height 40%"
+        "--prompt »"
+        "--layout=reverse"
+      ];
       fileWidgetCommand = "fd --type f";
       fileWidgetOptions = [ "--preview 'head {}'" ];
       changeDirWidgetCommand = "fd --type d";
@@ -217,14 +232,14 @@ in
     };
 
     hyprpaper = {
-        enable = true;
-        settings = {
-            preload = ["~/.config/wallpaperflare.com_wallpaper.jpg"];
-            wallpaper = [
-                "eDP-1,~/.config/wallpaperflare.com_wallpaper.jpg"
-                "HDMI-A-1,~/.config/wallpaperflare.com_wallpaper.jpg"
-            ];
-        };
+      enable = true;
+      settings = {
+        preload = [ "~/.config/wallpaperflare.com_wallpaper.jpg" ];
+        wallpaper = [
+          "eDP-1,~/.config/wallpaperflare.com_wallpaper.jpg"
+          "HDMI-A-1,~/.config/wallpaperflare.com_wallpaper.jpg"
+        ];
+      };
     };
 
     blueman-applet.enable = true;
@@ -239,8 +254,8 @@ in
     network-manager-applet.enable = true;
 
     syncthing = {
-        enable = true;
-        tray.enable = true;
+      enable = true;
+      tray.enable = true;
     };
   };
 
@@ -298,6 +313,7 @@ in
       mongodb-compass
       unstable.nekoray
       nil
+      nixfmt-rfc-style
       nodePackages.bash-language-server
       nodePackages.dockerfile-language-server-nodejs
       nodePackages.typescript-language-server
