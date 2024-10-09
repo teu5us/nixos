@@ -28,4 +28,10 @@
   };
 
   hardware.opengl.extraPackages = with pkgs; [ intel-media-driver ];
+  hardware.trackpoint = {
+      enable = true;
+      emulateWheel = true;
+      speed = 150;
+      sensitivity = 255;
+  };
 }
