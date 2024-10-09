@@ -293,12 +293,13 @@ in
 
     packages = with pkgs; [
       appimage-run
-      unstable.basedpyright
       black
       chromium
       cliphist
       clipse
       discord
+      docker-compose-language-service
+      dockerfile-language-server-nodejs
       emmet-ls
       gnome.nautilus
       gnome.sushi
@@ -307,17 +308,14 @@ in
       hyprshot
       imagemagickBig
       insomnia
-      unstable.spoofdpi
       jq
+      lz4json
       marksman
       mongodb-compass
-      unstable.nekoray
       nil
       nixfmt-rfc-style
       nodePackages.bash-language-server
-      nodePackages.dockerfile-language-server-nodejs
       nodePackages.typescript-language-server
-      nodePackages.yaml-language-server
       obs-studio
       obsidian
       onlyoffice-bin
@@ -326,19 +324,21 @@ in
       pgadmin4-desktopmode
       poetry
       pyprland
-      # pyright
       rust-analyzer
       sqlite
       tdesktop
       tmux
+      unstable.basedpyright
+      unstable.nekoray
+      unstable.spoofdpi
       vscode-fhs
       vscode-langservers-extracted
       warp-terminal
-      wl-kbptr
       wl-clipboard
+      wl-kbptr
       wlrctl
       xdg-utils
-      lz4json
+      yaml-language-server
     ];
 
     stateVersion = "24.05";
