@@ -29,6 +29,14 @@
       KEYBOARD_KEY_90007=btn_right
     '';
 
+    yggdrasil = {
+      enable = true;
+      persistentKeys = true;
+      settings = {
+        Peers = [ "tls://213.226.68.79:14578" ];
+      };
+    };
+
     nscd.enable = true;
     cron.enable = true;
     blueman.enable = true;
