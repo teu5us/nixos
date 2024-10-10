@@ -296,7 +296,6 @@ in
       black
       chromium
       cliphist
-      clipse
       discord
       docker-compose-language-service
       dockerfile-language-server-nodejs
