@@ -102,6 +102,7 @@
             ./common/virtualisation.nix
             ./machines/nix450s/hardware-configuration.nix
             ./machines/nix450s/base.nix
+            ./machines/nix450s/network.nix
             ./machines/nix450s/services.nix
             ./gui
             ./users/suess.nix
