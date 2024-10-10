@@ -1,11 +1,13 @@
 { pkgs, ... }:
 
 {
-    boot.kernelParams = [
-      "pcie_aspm=force"
-      "usbcore.autosuspend=1"
-      "intel_pstate=active"
-    ];
+  boot.kernelParams = [
+    "pcie_aspm=force"
+    "usbcore.autosuspend=1"
+    "intel_pstate=active"
+    "intel_iommu=on"
+    "iommu=pt"
+  ];
 
   boot.initrd.luks.devices = {
     root = {
@@ -19,6 +21,16 @@
       allowDiscards = true;
     };
   };
+
+  boot.extraModprobeConfig = ''
+    options i915 modeset=1 enable_fbc=1 enable_dc=2 enable_psr=1 fastboot=1 enable_dpcd_backlight=3 enable_guc=0 enable_gvt=1
+    options drm vblankoffdelay=1
+    options snd_hda_intel power_save=1
+    options iwlwifi power_save=1 power_level=5 swcrypto=0 uapsd_disable=0 d0i3_disable=0
+    options iwlmvm power_scheme=3
+    options thinkpad_acpi fan_control=1
+    options kvm ignore_msrs=1
+  '';
 
   fileSystems = {
     "/".options = [
@@ -35,9 +47,9 @@
 
   hardware.opengl.extraPackages = with pkgs; [ intel-media-driver ];
   hardware.trackpoint = {
-      enable = true;
-      emulateWheel = true;
-      speed = 150;
-      sensitivity = 255;
+    enable = true;
+    emulateWheel = true;
+    speed = 150;
+    sensitivity = 255;
   };
 }
