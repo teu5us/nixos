@@ -25,8 +25,8 @@
 
     udev.extraHwdb = ''
       evdev:input:b0005v056Ep0133*
-      KEYBOARD_KEY_90002=btn_left
-      KEYBOARD_KEY_90007=btn_right
+       KEYBOARD_KEY_90002=btn_left
+       KEYBOARD_KEY_90007=btn_right
     '';
 
     yggdrasil = {
