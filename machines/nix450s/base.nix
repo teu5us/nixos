@@ -45,11 +45,20 @@
     ];
   };
 
-  hardware.opengl.extraPackages = with pkgs; [ intel-media-driver ];
-  hardware.trackpoint = {
-    enable = true;
-    emulateWheel = true;
-    speed = 150;
-    sensitivity = 255;
+  hardware = {
+    opengl.extraPackages = with pkgs; [ intel-media-driver ];
+
+    trackpoint = {
+      enable = true;
+      emulateWheel = true;
+      speed = 255;
+      sensitivity = 255;
+    };
   };
+
+  # set trackpoint sensitivity here, otherwise it gets reset
+  services.udev.extraHwdb = ''
+    evdev:name:TPPS/2 IBM TrackPoint:dmi:*:svnLENOVO:*:pvrThinkPadT450s:*
+     POINTINGSTICK_SENSITIVITY=255
+  '';
 }
