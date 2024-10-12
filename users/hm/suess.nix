@@ -53,7 +53,7 @@ in
         name = "FiraCode Nerd Font";
         size = 10;
       };
-      theme = "Dracula";
+      theme = "Tokyo Night";
       settings = {
         background_opacity = "0.9";
         editor = "vi";
