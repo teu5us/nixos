@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 {
   boot.kernelParams = [
@@ -7,6 +7,7 @@
     "intel_pstate=active"
     "intel_iommu=on"
     "iommu=pt"
+    "acpi_backlight=video"
   ];
 
   boot.initrd.luks.devices = {
@@ -21,6 +22,8 @@
       allowDiscards = true;
     };
   };
+
+  boot.extraModulePackages = with config.boot.kernelPackages; [ acpi_call ];
 
   boot.extraModprobeConfig = ''
     options i915 modeset=1 enable_fbc=1 enable_dc=2 enable_psr=1 fastboot=1 enable_dpcd_backlight=3 enable_guc=0 enable_gvt=1
