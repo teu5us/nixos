@@ -262,8 +262,8 @@ in
   gtk = {
     enable = true;
     theme = {
-      package = pkgs.dracula-theme;
-      name = "Dracula";
+      package = pkgs.tokyonight-gtk-theme;
+      name = "Tokyonight-Dark-BL-LB";
     };
     iconTheme = {
       package = pkgs.papirus-icon-theme;
