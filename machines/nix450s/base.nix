@@ -1,4 +1,9 @@
-{ pkgs, config, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 
 {
   boot.kernelParams = [
@@ -60,8 +65,12 @@
   };
 
   # set trackpoint sensitivity here, otherwise it gets reset
-  services.udev.extraHwdb = ''
-    evdev:name:TPPS/2 IBM TrackPoint:dmi:*:svnLENOVO:*:pvrThinkPadT450s:*
-     POINTINGSTICK_SENSITIVITY=255
-  '';
+  services.udev.extraHwdb =
+    let
+      c = config.hardware.trackpoint;
+    in
+    lib.optionalString c.enable ''
+      evdev:name:TPPS/2 IBM TrackPoint:dmi:*:svnLENOVO:*:pvrThinkPadT450s:*
+       POINTINGSTICK_SENSITIVITY=${builtins.toString c.sensitivity}
+    '';
 }
