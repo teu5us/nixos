@@ -70,7 +70,7 @@
       c = config.hardware.trackpoint;
     in
     lib.optionalString c.enable ''
-      evdev:name:TPPS/2 IBM TrackPoint:dmi:*:svnLENOVO:*:pvrThinkPadT450s:*
+      evdev:name:${c.device}:dmi:*:svnLENOVO:*:pvrThinkPad*:*
        POINTINGSTICK_SENSITIVITY=${builtins.toString c.sensitivity}
     '';
 }
