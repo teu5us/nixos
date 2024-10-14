@@ -2,6 +2,7 @@
   pkgs,
   unstable,
   config,
+  meg,
   ...
 }:
 
@@ -310,6 +311,7 @@ in
       jq
       lz4json
       marksman
+      meg.packages.x86_64-linux.meg
       mongodb-compass
       nil
       nixfmt-rfc-style

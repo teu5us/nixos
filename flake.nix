@@ -12,6 +12,8 @@
     };
 
     kmonad.url = "github:kmonad/kmonad?dir=nix";
+
+    meg.url = "git+ssh://git@github.com/Teu5us/meg.git";
   };
 
   outputs =
@@ -22,6 +24,7 @@
       nixos-hardware,
       home-manager,
       kmonad,
+      meg,
     }:
     let
       unstable =
@@ -44,6 +47,7 @@
               nixpkgs-unstable
               nixos-hardware
               home-manager
+              meg
               ;
             unstable = unstable "x86_64-linux" true;
             hostName = "omen15";
@@ -84,6 +88,7 @@
               nixpkgs-unstable
               nixos-hardware
               home-manager
+              meg
               ;
             unstable = unstable "x86_64-linux" false;
             hostName = "nix450s";
