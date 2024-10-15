@@ -65,11 +65,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1728902542,
-        "narHash": "sha256-O6lA/+DMCyNVkgmzfcS/GL+j+3/DcOPfMYlG0CDOIH0=",
+        "lastModified": 1728980206,
+        "narHash": "sha256-cxk1lJpEc/fr751sGU6lpS5BCi6bOSkDReBtLob5upc=",
         "ref": "refs/heads/main",
-        "rev": "20a780ca5b067d4ad9431c979bbf86231fe8c2c5",
-        "revCount": 2,
+        "rev": "fdcc6d33e0b6b12de3b6de9dd1ada994d261970b",
+        "revCount": 7,
         "type": "git",
         "url": "ssh://git@github.com/Teu5us/meg.git"
       },
