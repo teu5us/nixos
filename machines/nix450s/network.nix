@@ -11,5 +11,6 @@
       22000
       21027
     ];
+    interfaces.br-bknd.allowedTCPPorts = [ 8000 ];
   };
 }
