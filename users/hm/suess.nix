@@ -313,7 +313,7 @@ in
       marksman
       meg.packages.x86_64-linux.meg
       mongodb-compass
-      nil
+      nixd
       nixfmt-rfc-style
       nodePackages.bash-language-server
       nodePackages.typescript-language-server
