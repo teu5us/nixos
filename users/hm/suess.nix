@@ -301,8 +301,10 @@ in
       docker-compose-language-service
       dockerfile-language-server-nodejs
       emmet-ls
+      exercism
       gnome.nautilus
       gnome.sushi
+      gopls
       graphviz
       hyprlayout
       hyprshot
