@@ -229,7 +229,7 @@ in
     emacs = {
       package = config.programs.emacs.finalPackage;
       enable = true;
-      defaultEditor = true;
+      defaultEditor = false;
       socketActivation.enable = true;
       startWithUserSession = false;
     };
