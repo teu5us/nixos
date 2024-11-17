@@ -9,6 +9,7 @@
 let
   hyprlayout = pkgs.callPackage ./hyprlayout.nix { };
   lz4json = pkgs.callPackage ./lz4json.nix { };
+  tmux-sessionizer = pkgs.callPackage ./tmux-sessionizer.nix { };
 in
 {
   nixpkgs.config.allowUnfree = true;
@@ -158,6 +159,7 @@ in
           export PS1='$ '
         fi
 
+        bindkey -s ^e "tmux-sessionizer\n"
         bindkey '^F' autosuggest-accept
         bindkey '^G' toggle-fzf-tab
 
@@ -331,6 +333,7 @@ in
       sqlite
       tdesktop
       tmux
+      tmux-sessionizer
       unstable.basedpyright
       unstable.nekoray
       unstable.spoofdpi
