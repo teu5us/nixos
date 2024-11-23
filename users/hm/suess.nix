@@ -339,7 +339,6 @@ in
       unstable.spoofdpi
       vscode-fhs
       vscode-langservers-extracted
-      warp-terminal
       wl-clipboard
       wl-kbptr
       wlrctl
