@@ -29,6 +29,8 @@
        KEYBOARD_KEY_90007=btn_right
     '';
 
+    udev.extraRules = builtins.readFile ./69-probe-rs.rules;
+
     yggdrasil = {
       enable = true;
       persistentKeys = true;
