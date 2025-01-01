@@ -1,4 +1,8 @@
-{ pkgs, config, ... }:
+{
+  pkgs,
+  config,
+  ...
+}:
 
 {
   boot = {
@@ -91,6 +95,12 @@
   systemd.extraConfig = ''
     DefaultTimeoutStopSec=10s
   '';
+
+  stylix = {
+    enable = true;
+    image = ../gui/wall.jpg;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";
+  };
 
   users.mutableUsers = true;
 

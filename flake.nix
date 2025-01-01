@@ -11,6 +11,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    stylix.url = "github:danth/stylix";
+
     # kmonad.url = "github:kmonad/kmonad?dir=nix";
   };
 
@@ -20,6 +22,7 @@
       nixpkgs-unstable,
       nixos-hardware,
       home-manager,
+      stylix,
       # kmonad,
       ...
     }:
@@ -44,6 +47,7 @@
               nixpkgs-unstable
               nixos-hardware
               home-manager
+              stylix
               ;
             unstable = unstable "x86_64-linux" false;
             hostName = "omen15";
@@ -57,6 +61,7 @@
               common-pc-ssd
             ])
             ++ [
+              stylix.nixosModules.stylix
               home-manager.nixosModules.home-manager
               ./common/packages-config.nix
               ./common/base.nix
@@ -90,6 +95,7 @@
           };
           modules = [
             nixos-hardware.nixosModules.lenovo-thinkpad-t450s
+            stylix.nixosModules.stylix
             home-manager.nixosModules.home-manager
             # kmonad.nixosModules.default
             ./common/packages-config.nix

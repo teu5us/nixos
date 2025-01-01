@@ -2,6 +2,7 @@
   pkgs,
   unstable,
   config,
+  stylix,
   ...
 }:
 
@@ -11,6 +12,10 @@ let
   tmux-sessionizer = pkgs.callPackage ./tmux-sessionizer.nix { };
 in
 {
+  disabledModules = [
+    "${stylix}/modules/neovim/hm.nix"
+  ];
+
   nixpkgs.config.allowUnfree = true;
 
   programs = {
@@ -221,26 +226,26 @@ in
     zathura = {
       enable = true;
       options = {
-        "default-bg" = "#1a1b26";
-        "default-fg" = "#a9b1d6";
-        "statusbar-fg" = "#a9b1d6";
-        "statusbar-bg" = "#24283b";
-        "inputbar-bg" = "#1a1b26";
-        "inputbar-fg" = "#73daca";
-        "notification-bg" = "#1a1b26";
-        "notification-fg" = "#73daca";
-        "notification-error-bg" = "#1a1b26";
-        "notification-error-fg" = "#f7768e";
-        "notification-warning-bg" = "#1a1b26";
-        "notification-warning-fg" = "#f7768e";
-        "highlight-color" = "#e0af68";
-        "highlight-active-color" = "#9aa5ce";
-        "completion-bg" = "#24283b";
-        "completion-fg" = "#a9b1d6";
-        "completion-highlight-fg" = "#9aa5ce";
-        "completion-highlight-bg" = "24283b";
-        "recolor-lightcolor" = "#16161e";
-        "recolor-darkcolor" = "#a9b1d6";
+        # "default-bg" = "#1a1b26";
+        # "default-fg" = "#a9b1d6";
+        # "statusbar-fg" = "#a9b1d6";
+        # "statusbar-bg" = "#24283b";
+        # "inputbar-bg" = "#1a1b26";
+        # "inputbar-fg" = "#73daca";
+        # "notification-bg" = "#1a1b26";
+        # "notification-fg" = "#73daca";
+        # "notification-error-bg" = "#1a1b26";
+        # "notification-error-fg" = "#f7768e";
+        # "notification-warning-bg" = "#1a1b26";
+        # "notification-warning-fg" = "#f7768e";
+        # "highlight-color" = "#e0af68";
+        # "highlight-active-color" = "#9aa5ce";
+        # "completion-bg" = "#24283b";
+        # "completion-fg" = "#a9b1d6";
+        # "completion-highlight-fg" = "#9aa5ce";
+        # "completion-highlight-bg" = "24283b";
+        # "recolor-lightcolor" = "#16161e";
+        # "recolor-darkcolor" = "#a9b1d6";
         "recolor" = "true";
         "recolor-keephue" = "false";
       };
@@ -292,10 +297,10 @@ in
 
   gtk = {
     enable = true;
-    theme = {
-      package = pkgs.tokyonight-gtk-theme;
-      name = "Tokyonight-Dark";
-    };
+    # theme = {
+    #   package = pkgs.tokyonight-gtk-theme;
+    #   name = "Tokyonight-Dark";
+    # };
     iconTheme = {
       package = pkgs.papirus-icon-theme;
       name = "Papirus-Dark";
@@ -309,14 +314,19 @@ in
     '';
   };
 
+  stylix = {
+    cursor = {
+      package = pkgs.bibata-cursors;
+      name = "Bibata-Modern-Classic";
+      size = 24;
+    };
+  };
+
   home = {
     username = "suess";
     homeDirectory = "/home/suess";
 
     pointerCursor = {
-      package = pkgs.bibata-cursors;
-      name = "Bibata-Modern-Classic";
-      size = 24;
       gtk.enable = true;
       x11.enable = true;
       x11.defaultCursor = "left_ptr";
