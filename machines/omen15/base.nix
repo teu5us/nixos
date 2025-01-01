@@ -10,9 +10,7 @@
   };
 
   hardware = {
-    opengl = {
-      driSupport = true;
-      driSupport32Bit = true;
+    graphics = {
       extraPackages = with pkgs; [ nvidia-vaapi-driver ];
       extraPackages32 = with pkgs.pkgsi686Linux; [ nvidia-vaapi-driver ];
     };

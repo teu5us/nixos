@@ -3,7 +3,6 @@
   unstable,
   nixpkgs,
   nixpkgs-unstable,
-  meg,
   ...
 }:
 
@@ -31,12 +30,7 @@
     useGlobalPkgs = true;
     useUserPackages = true;
     extraSpecialArgs = {
-      inherit
-        unstable
-        nixpkgs
-        nixpkgs-unstable
-        meg
-        ;
+      inherit unstable nixpkgs nixpkgs-unstable;
     };
   };
 }

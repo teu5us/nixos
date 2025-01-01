@@ -54,7 +54,7 @@
   };
 
   hardware = {
-    opengl.extraPackages = with pkgs; [ intel-media-driver ];
+    graphics.extraPackages = with pkgs; [ intel-media-driver ];
 
     trackpoint = {
       enable = true;

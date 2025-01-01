@@ -26,7 +26,7 @@ in
 {
   programs = {
     bash = {
-      enableCompletion = true;
+      completion.enable = true;
       undistractMe.enable = true;
       shellAliases = aliases;
     };

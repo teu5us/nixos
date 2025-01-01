@@ -37,7 +37,7 @@
 
   hardware = {
     ksm.enable = true;
-    opengl.enable = true;
+    graphics.enable = true;
   };
 
   console = {

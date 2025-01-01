@@ -2,7 +2,6 @@
   pkgs,
   unstable,
   config,
-  meg,
   ...
 }:
 
@@ -16,7 +15,7 @@ in
 
   programs = {
     alacritty = {
-      enable = true;
+      enable = false;
       settings = {
         window = {
           dimensions = {
@@ -50,12 +49,12 @@ in
     };
 
     kitty = {
-      enable = true;
+      enable = false;
       font = {
         name = "FiraCode Nerd Font";
         size = 10;
       };
-      theme = "Tokyo Night";
+      themeFile = "tokyo_night_night";
       settings = {
         background_opacity = "0.9";
         editor = "vi";
@@ -295,7 +294,7 @@ in
     enable = true;
     theme = {
       package = pkgs.tokyonight-gtk-theme;
-      name = "Tokyonight-Dark-BL-LB";
+      name = "Tokyonight-Dark";
     };
     iconTheme = {
       package = pkgs.papirus-icon-theme;
@@ -328,13 +327,12 @@ in
       black
       chromium
       cliphist
-      discord
       docker-compose-language-service
       dockerfile-language-server-nodejs
       emmet-ls
       exercism
-      gnome.nautilus
-      gnome.sushi
+      nautilus
+      sushi
       gopls
       graphviz
       hyprlayout
@@ -344,7 +342,6 @@ in
       jq
       lz4json
       marksman
-      meg.packages.x86_64-linux.meg
       mongodb-compass
       nixd
       nixfmt-rfc-style
@@ -364,6 +361,7 @@ in
       tmux
       tmux-sessionizer
       unstable.basedpyright
+      unstable.ghostty
       unstable.nekoray
       unstable.spoofdpi
       vscode-fhs

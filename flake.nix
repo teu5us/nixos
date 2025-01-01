@@ -1,30 +1,27 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
 
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.05";
+      url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    kmonad.url = "github:kmonad/kmonad?dir=nix";
-
-    meg.url = "git+ssh://git@github.com/Teu5us/meg.git";
+    # kmonad.url = "github:kmonad/kmonad?dir=nix";
   };
 
   outputs =
     {
-      self,
       nixpkgs,
       nixpkgs-unstable,
       nixos-hardware,
       home-manager,
-      kmonad,
-      meg,
+      # kmonad,
+      ...
     }:
     let
       unstable =
@@ -47,9 +44,8 @@
               nixpkgs-unstable
               nixos-hardware
               home-manager
-              meg
               ;
-            unstable = unstable "x86_64-linux" true;
+            unstable = unstable "x86_64-linux" false;
             hostName = "omen15";
           };
           modules =
@@ -88,7 +84,6 @@
               nixpkgs-unstable
               nixos-hardware
               home-manager
-              meg
               ;
             unstable = unstable "x86_64-linux" false;
             hostName = "nix450s";
@@ -96,7 +91,7 @@
           modules = [
             nixos-hardware.nixosModules.lenovo-thinkpad-t450s
             home-manager.nixosModules.home-manager
-            kmonad.nixosModules.default
+            # kmonad.nixosModules.default
             ./common/packages-config.nix
             ./common/base.nix
             ./common/bluetooth.nix

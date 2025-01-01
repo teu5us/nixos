@@ -2,6 +2,6 @@
 
 {
   nixpkgs.config = {
-    cudaSupport = true;
+    cudaSupport = false;
   };
 }

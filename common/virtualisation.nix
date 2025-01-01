@@ -19,7 +19,7 @@
         };
         swtpm = {
           enable = true;
-          package = pkgs.swtpm-tpm2;
+          package = pkgs.swtpm;
         };
         verbatimConfig = ''
           user = "suess"
