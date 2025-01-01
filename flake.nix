@@ -89,6 +89,7 @@
               nixpkgs-unstable
               nixos-hardware
               home-manager
+              stylix
               ;
             unstable = unstable "x86_64-linux" false;
             hostName = "nix450s";
