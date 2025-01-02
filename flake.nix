@@ -12,8 +12,6 @@
     };
 
     stylix.url = "github:danth/stylix";
-
-    # kmonad.url = "github:kmonad/kmonad?dir=nix";
   };
 
   outputs =
@@ -23,7 +21,6 @@
       nixos-hardware,
       home-manager,
       stylix,
-      # kmonad,
       ...
     }:
     let
@@ -98,7 +95,6 @@
             nixos-hardware.nixosModules.lenovo-thinkpad-t450s
             stylix.nixosModules.stylix
             home-manager.nixosModules.home-manager
-            # kmonad.nixosModules.default
             ./common/packages-config.nix
             ./common/base.nix
             ./common/bluetooth.nix
