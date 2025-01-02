@@ -104,7 +104,7 @@ in
     };
 
     emacs = {
-      enable = true;
+      enable = false;
       package = pkgs.emacs29-pgtk;
       extraPackages = (epkgs: with epkgs; [ vterm ]);
     };
@@ -260,8 +260,8 @@ in
 
   services = {
     emacs = {
+      enable = false;
       package = config.programs.emacs.finalPackage;
-      enable = true;
       defaultEditor = false;
       socketActivation.enable = true;
       startWithUserSession = false;
