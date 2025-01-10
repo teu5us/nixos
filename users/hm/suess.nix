@@ -111,7 +111,6 @@ in
 
     neovim = {
       enable = true;
-      package = unstable.neovim-unwrapped;
       viAlias = true;
       vimAlias = true;
       extraPackages = with unstable; [
