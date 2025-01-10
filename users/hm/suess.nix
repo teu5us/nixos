@@ -13,6 +13,7 @@ let
 in
 {
   disabledModules = [
+    "${stylix}/modules/kitty/hm.nix"
     "${stylix}/modules/neovim/hm.nix"
   ];
 
@@ -54,7 +55,7 @@ in
     };
 
     kitty = {
-      enable = false;
+      enable = true;
       font = {
         name = "FiraCode Nerd Font";
         size = 10;
@@ -113,7 +114,7 @@ in
       enable = true;
       viAlias = true;
       vimAlias = true;
-      extraPackages = with unstable; [
+      extraPackages = with pkgs; [
         gcc
         luajitPackages.luarocks
       ];
@@ -369,10 +370,9 @@ in
       tdesktop
       tmux
       tmux-sessionizer
-      unstable.basedpyright
-      unstable.ghostty
-      unstable.nekoray
-      unstable.spoofdpi
+      basedpyright
+      # unstable.ghostty
+      nekoray
       vscode-fhs
       vscode-langservers-extracted
       wl-clipboard
