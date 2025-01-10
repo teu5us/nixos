@@ -103,6 +103,7 @@
   };
 
   users.mutableUsers = true;
+  users.extraGroups.plugdev = { };
 
   system.stateVersion = "24.05";
 }
