@@ -10,6 +10,44 @@ let
   hyprlayout = pkgs.callPackage ./hyprlayout.nix { };
   lz4json = pkgs.callPackage ./lz4json.nix { };
   tmux-sessionizer = pkgs.callPackage ./tmux-sessionizer.nix { };
+  vidthumb = pkgs.writeShellScript "vidthumb.sh" ''
+    #!/usr/bin/env bash
+
+    if ! [ -f "$1" ]; then
+    	exit 1
+    fi
+
+    cache="$HOME/.cache/vidthumb"
+    index="$cache/index.json"
+    movie="$(realpath "$1")"
+
+    mkdir -p "$cache"
+
+    if [ -f "$index" ]; then
+    	thumbnail="$(${pkgs.jq}/bin/jq -r ". \"$movie\"" <"$index")"
+    	if [[ "$thumbnail" != "null" ]]; then
+    		if [[ ! -f "$cache/$thumbnail" ]]; then
+    			exit 1
+    		fi
+    		echo "$cache/$thumbnail"
+    		exit 0
+    	fi
+    fi
+
+    thumbnail="$(uuidgen).jpg"
+
+    if ! ${pkgs.ffmpegthumbnailer}/bin/ffmpegthumbnailer -i "$movie" -o "$cache/$thumbnail" -s 0 2>/dev/null; then
+    	exit 1
+    fi
+
+    if [[ ! -f "$index" ]]; then
+    	echo "{\"$movie\": \"$thumbnail\"}" >"$index"
+    fi
+    json="$(jq -r --arg "$movie" "$thumbnail" ". + {\"$movie\": \"$thumbnail\"}" <"$index")"
+    echo "$json" >"$index"
+
+    echo "$cache/$thumbnail"
+  '';
 in
 {
   disabledModules = [
@@ -221,6 +259,56 @@ in
       enableBashIntegration = true;
       enableZshIntegration = true;
       nix-direnv.enable = true;
+    };
+
+    lf = {
+      enable = true;
+      settings = {
+        cleaner =
+          (pkgs.writeShellScript "cleaner.sh" ''
+            #!/bin/sh
+            exec kitten icat --clear --stdin no --transfer-mode file </dev/null >/dev/tty
+          '').outPath;
+      };
+      previewer.source = pkgs.writeShellScript "previewer.sh" ''
+        #!/bin/sh
+
+        draw() {
+          kitten icat --stdin no --transfer-mode file --place "''${w}x''${h}@''${x}x''${y}" "$1" </dev/null >/dev/tty
+          exit 1
+        }
+
+        file="$1"
+        w="$2"
+        h="$3"
+        x="$4"
+        y="$5"
+
+        case "$(file -Lb --mime-type "$file")" in 
+          image/*)
+            draw "$file"
+            ;;
+          video/*)
+            draw "$(${vidthumb} "$file")"
+            ;;
+        esac
+
+        pistol "$file"
+      '';
+    };
+
+    pistol = {
+      enable = true;
+      associations = [
+        {
+          mime = "application/json";
+          command = "${pkgs.jq}/bin/jq . %pistol-filename%";
+        }
+        {
+          mime = "text/plain";
+          command = "sh: ${pkgs.bat}/bin/bat --color=always --paging=never %pistol-filename%";
+        }
+      ];
     };
 
     zathura = {
