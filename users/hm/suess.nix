@@ -92,6 +92,8 @@ in
       };
     };
 
+    bat.enable = true;
+
     kitty = {
       enable = true;
       font = {
