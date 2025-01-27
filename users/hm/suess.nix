@@ -308,7 +308,7 @@ in
           command = "${pkgs.jq}/bin/jq . %pistol-filename%";
         }
         {
-          mime = "text/plain";
+          mime = "text/*";
           command = "sh: ${pkgs.bat}/bin/bat --color=always --paging=never %pistol-filename%";
         }
       ];
