@@ -342,6 +342,70 @@ in
       };
     };
 
+    zed-editor = {
+      enable = true;
+      userKeymaps = [
+        {
+          context = "VimControl && !menu";
+          bindings = {
+            "g shift-f" = "file_finder::Toggle";
+          };
+        }
+      ];
+      userSettings = {
+        assistant = {
+          enabled = true;
+          version = "2";
+          default_model = {
+            provider = "ollama";
+            model = "qwen2.5-coder:14b";
+          };
+        };
+        telemetry = {
+          diagnostics = false;
+          metrics = false;
+        };
+        vim_mode = true;
+        ui_font_size = 14;
+        buffer_font_family = "FiraCode Nerd Font";
+        buffer_font_size = 12;
+        theme = {
+          mode = "system";
+          light = "Tokyo Night";
+          dark = "Tokyo Night";
+        };
+        languages = {
+          C = {
+            format_on_save = "on";
+            formatter = "language_server";
+            enable_language_server = true;
+          };
+          Python = {
+            language_servers = [
+              "basedpyright"
+              "!python"
+            ];
+          };
+        };
+        lsp = {
+          basedpyright = {
+            settings = {
+              python = {
+                pythonPath = ".venv/bin/python";
+              };
+              basedpyright.analysis = {
+                diagnosticMode = "workspace";
+                # inlayHints = { };
+              };
+            };
+          };
+        };
+        inlay_hints = {
+          enable = true;
+        };
+      };
+    };
+
     zoxide = {
       enable = true;
       enableZshIntegration = true;
