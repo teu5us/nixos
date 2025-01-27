@@ -53,9 +53,10 @@ in
   disabledModules = [
     "${stylix}/modules/kitty/hm.nix"
     "${stylix}/modules/neovim/hm.nix"
+    "${stylix}/modules/cavalier/hm.nix"
   ];
 
-  nixpkgs.config.allowUnfree = true;
+  # nixpkgs.config.allowUnfree = true;
 
   programs = {
     alacritty = {
