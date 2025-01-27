@@ -3,7 +3,7 @@
 {
   services = {
     ollama = {
-      enable = false;
+      enable = true;
       package = pkgs.ollama;
       acceleration = "cuda";
       environmentVariables.CUDA_VISIBLE_DEVICES = "0";
