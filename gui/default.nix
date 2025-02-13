@@ -5,6 +5,29 @@
 
   programs.hyprland.enable = true;
 
+  xdg.portal = {
+    enable = true;
+    config = {
+      config.default = [
+        "hyprland"
+        "gtk"
+        "kde"
+      ];
+    };
+    wlr.enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal
+      xdg-desktop-portal-hyprland
+      xdg-desktop-portal-gtk
+      xdg-desktop-portal-kde
+    ];
+  };
+
+  systemd.tmpfiles.rules = [
+    "L+ /usr/libexec/xdg-desktop-portal - - - - ${pkgs.xdg-desktop-portal}/libexec/xdg-desktop-portal"
+    "L+ /usr/libexec/xdg-desktop-portal-kde - - - - ${pkgs.xdg-desktop-portal-kde}/libexec/xdg-desktop-portal-kde"
+  ];
+
   environment.systemPackages = with pkgs; [
     firefox
     wofi
