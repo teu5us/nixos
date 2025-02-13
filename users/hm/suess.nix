@@ -537,6 +537,7 @@ in
       wlrctl
       xdg-utils
       yaml-language-server
+      zoom-us
     ];
 
     stateVersion = "24.05";
