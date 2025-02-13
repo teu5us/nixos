@@ -40,17 +40,12 @@
       "hfjbmagddngcpeloejdejnfgbamkjaeg" # vimium c
       "eimadpbcbfnmbkopoojfekhnkhdbieeh" # darkreader
       "chphlpgkkbolifaimnlloiipkdnihall" # onetab
-      "lhaoghhllmiaaagaffababmkdllgfcmc" # atomic-chrome
       "djflhoibgkdhkhhcedjiklpkjnoahfmg" # user-agent switcher
-      "jinjaccalgkegednnccohejagnlnfdag" # violentmonkey
-      "oboonakemofpalcgghocfoadofidjkkk" # keepassxc-browser
       "fhcgjolkccmbidfldomjliifgaodjagh" # cookieautodelete
       "gphhapmejobijbbhgpjhcjognlahblep" # gnome extensions
       "aleakchihdccplidncghkekgioiakgal" # h264ify
-      "fmkadmapgofadopljbjfkapdkoienihi" # react devtools
-      "lmhkpmbekcpmknklioeibfkpmmfibljd" # redux devtools
-      "ndlbedplllcgconngcnfmkadhokfaaln" # graphql network inspector
       "dpjamkmjmigaoobjbekmfgabipmfilij" # empty new tab page
+      "padekgcemlokbadohgkifijomclgjgif" # switchyomega
     ];
   };
 
