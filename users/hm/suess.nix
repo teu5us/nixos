@@ -399,6 +399,12 @@ in
               };
             };
           };
+          # rust-analyzer = {
+          #   binary = {
+          #     path = "${pkgs.rust-analyzer}/bin/rust-analyzer";
+          #     args = [ ];
+          #   };
+          # };
         };
         inlay_hints = {
           enable = true;
