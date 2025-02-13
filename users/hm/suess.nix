@@ -413,6 +413,8 @@ in
     };
   };
 
+  xdg.mime.enable = true;
+
   services = {
     emacs = {
       enable = false;
