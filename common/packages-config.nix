@@ -4,6 +4,7 @@
   nixpkgs,
   nixpkgs-unstable,
   stylix,
+  zen-browser,
   ...
 }:
 
@@ -36,6 +37,7 @@
         nixpkgs
         nixpkgs-unstable
         stylix
+        zen-browser
         ;
     };
   };

@@ -3,6 +3,7 @@
   unstable,
   config,
   stylix,
+  zen-browser,
   ...
 }:
 
@@ -543,6 +544,7 @@ in
       wlrctl
       xdg-utils
       yaml-language-server
+      zen-browser.packages.x86_64-linux.default
       zoom-us
     ];
 

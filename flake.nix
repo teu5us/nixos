@@ -11,6 +11,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     stylix.url = "github:danth/stylix";
   };
 
@@ -21,6 +26,7 @@
       nixos-hardware,
       home-manager,
       stylix,
+      zen-browser,
       ...
     }:
     let
@@ -45,6 +51,7 @@
               nixos-hardware
               home-manager
               stylix
+              zen-browser
               ;
             unstable = unstable "x86_64-linux" false;
             hostName = "omen15";
@@ -87,6 +94,7 @@
               nixos-hardware
               home-manager
               stylix
+              zen-browser
               ;
             unstable = unstable "x86_64-linux" false;
             hostName = "nix450s";
