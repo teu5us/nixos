@@ -423,6 +423,8 @@ in
   xdg.mime.enable = true;
 
   services = {
+    dunst.enable = true;
+
     emacs = {
       enable = false;
       package = config.programs.emacs.finalPackage;
