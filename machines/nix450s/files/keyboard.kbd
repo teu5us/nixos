@@ -62,31 +62,31 @@
 
 (deflayer qwerty
   esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  home   end  ins  del
-  @gfn 1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
   @tn  q    w    e    r    t    y    u    i    o    p    [    ]    \
   @sup @sed s    d    f    g    h    j    k    l    ;    '    @rn
   lsft z    x    c    v    b    n    m    ,    .    /    rsft
-  @eal @sup @eal           @cpc           ralt @sup rctl      pgup  up    pgdn
+  @eal @sup @eal           @cpc           ralt @gfn rctl      pgup  up    pgdn
                                                               left  down  rght
 )
 
 (deflayer dvorak
   esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  home   end  ins  del
-  @gfn 1    2    3    4    5    6    7    8    9    0    [    ]    bspc
+  grv  1    2    3    4    5    6    7    8    9    0    [    ]    bspc
   @tn  '    ,    .    p    y    f    g    c    r    l    /    =    \
   @sup @sed o    e    u    i    d    h    t    n    s    -    @rn
   lsft ;    q    j    k    x    b    m    w    v    z    rsft
-  @eal @sup @eal           @cpc           ralt @sup rctl      pgup  up    pgdn
+  @eal @sup @eal           @cpc           ralt @gfn rctl      pgup  up    pgdn
                                                               left  down  rght
 )
 
 (deflayer moddh
   esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  home   end  ins  del
-  @gfn 1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
   @tn  q    w    f    p    b    j    l    u    y    ;    [    ]    \
   @sup @sed r    s    t    g    m    n    e    i    o    '    @rn
   lsft x    c    d    v    z    k    h    ,    .    /    rsft
-  @eal @sup @eal           @cpc           ralt @sup rctl      pgup  up    pgdn
+  @eal @sup @eal           @cpc           ralt @gfn rctl      pgup  up    pgdn
                                                               left  down  rght
 )
 
@@ -111,11 +111,11 @@
 )
 
 (deflayer media
-  _    mute vold volu _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    mute vold volu _
   _    _    _                 _                _    _    _    _    _    _
                                                               _    _    _
 )
