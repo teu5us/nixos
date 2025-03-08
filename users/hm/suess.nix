@@ -156,6 +156,7 @@ in
       enable = true;
       viAlias = true;
       vimAlias = true;
+      defaultEditor = true;
       extraPackages = with pkgs; [
         gcc
         luajitPackages.luarocks
