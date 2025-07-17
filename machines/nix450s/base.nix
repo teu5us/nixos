@@ -64,6 +64,11 @@
     };
   };
 
+  powerManagement = {
+    cpuFreqGovernor = "performance";
+    powertop.enable = true;
+  };
+
   # set trackpoint sensitivity here, otherwise it gets reset
   services.udev.extraHwdb =
     let
