@@ -29,7 +29,11 @@
        KEYBOARD_KEY_90007=btn_right
     '';
 
-    udev.extraRules = builtins.readFile ./69-probe-rs.rules;
+    udev.extraRules = ''
+      ${builtins.readFile ./69-probe-rs.rules}
+
+      ${builtins.readFile ./69-adb.rules}
+    '';
 
     yggdrasil = {
       enable = true;
