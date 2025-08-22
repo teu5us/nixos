@@ -2,6 +2,8 @@
 
 {
   programs = {
+    amnezia-vpn.enable = true;
+
     mtr.enable = true;
 
     gnupg.agent = {

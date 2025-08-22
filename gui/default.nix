@@ -31,13 +31,13 @@
     extraPortals = with pkgs; [
       xdg-desktop-portal-hyprland
       xdg-desktop-portal-gtk
-      xdg-desktop-portal-kde
+      kdePackages.xdg-desktop-portal-kde
     ];
   };
 
   systemd.tmpfiles.rules = [
     "L+ /usr/libexec/xdg-desktop-portal - - - - ${pkgs.xdg-desktop-portal}/libexec/xdg-desktop-portal"
-    "L+ /usr/libexec/xdg-desktop-portal-kde - - - - ${pkgs.xdg-desktop-portal-kde}/libexec/xdg-desktop-portal-kde"
+    "L+ /usr/libexec/xdg-desktop-portal-kde - - - - ${pkgs.kdePackages.xdg-desktop-portal-kde}/libexec/xdg-desktop-portal-kde"
   ];
 
   environment.systemPackages = with pkgs; [

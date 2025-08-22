@@ -2,22 +2,22 @@
 
 {
   fonts = {
-    packages = with pkgs; [
-      (nerdfonts.override {
-        fonts = [
-          "FiraCode"
-          "Iosevka"
-        ];
-      })
-      corefonts
-      dejavu_fonts
-      fira-sans
-      joypixels
-      noto-fonts
-      open-sans
-      roboto-mono
-      unifont
-    ];
+    packages =
+      with pkgs;
+      [
+        corefonts
+        dejavu_fonts
+        fira-sans
+        joypixels
+        noto-fonts
+        open-sans
+        roboto-mono
+        unifont
+      ]
+      ++ (with pkgs.nerd-fonts; [
+        fira-code
+        iosevka
+      ]);
     fontconfig = {
       enable = true;
       hinting = {

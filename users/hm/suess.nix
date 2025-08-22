@@ -55,6 +55,7 @@ in
     "${stylix}/modules/kitty/hm.nix"
     "${stylix}/modules/neovim/hm.nix"
     "${stylix}/modules/cavalier/hm.nix"
+    "${stylix}/modules/zed/hm.nix"
   ];
 
   # nixpkgs.config.allowUnfree = true;
@@ -167,79 +168,87 @@ in
 
     waybar.enable = true;
 
-    zsh = {
-      enable = true;
-      autocd = true;
-      dotDir = ".config/zsh";
-      enableCompletion = true;
-      autosuggestion.enable = true;
-      syntaxHighlighting.enable = true;
-      defaultKeymap = "viins";
-      #shellAliases = aliases;
-      initExtraBeforeCompInit = ''
-        fpath=(~/.config/zsh/completion $fpath)
-      '';
-      # Plugins
-      plugins = [
-        # sfz-prompt
-        {
-          name = "sfz";
-          src = builtins.fetchGit {
-            url = "https://github.com/teu5us/sfz-prompt.zsh";
-            rev = "1419b468675c367fa44cd14e1bf86997f2ada5fc";
-          };
-        }
-        {
-          name = "fzf-tab";
-          src = builtins.fetchGit {
-            url = "https://github.com/Aloxaf/fzf-tab";
-            rev = "c5c6e1d82910fb24072a10855c03e31ea2c51563";
-          };
-        }
-      ];
-      initExtra = ''
-        # Emacs tramp fix
-        if [[ "$TERM" == "dumb" ]]
-        then
-          unsetopt zle
-          unsetopt prompt_cr
-          unsetopt prompt_subst
-          # unfunction precmd
-          # unfunction preexec
-          export PS1='$ '
-        fi
+    zsh =
+      let
+        lib = pkgs.lib;
+        initExtraBeforeCompInit = lib.mkOrder 550 ''
+          fpath=(~/.config/zsh/completion $fpath)
+        '';
+        initExtra = lib.mkOrder 1000 ''
+          # Emacs tramp fix
+          if [[ "$TERM" == "dumb" ]]
+          then
+            unsetopt zle
+            unsetopt prompt_cr
+            unsetopt prompt_subst
+            # unfunction precmd
+            # unfunction preexec
+            export PS1='$ '
+          fi
 
-        bindkey -s ^e "tmux-sessionizer\n"
-        bindkey '^F' autosuggest-accept
-        bindkey '^G' toggle-fzf-tab
+          bindkey -s ^e "tmux-sessionizer\n"
+          bindkey '^F' autosuggest-accept
+          bindkey '^G' toggle-fzf-tab
 
-        # indicate mode by cursor shape
-        zle-keymap-select () {
-        if [ $KEYMAP = vicmd ]; then
-            printf "\033[2 q"
-        else
-            printf "\033[6 q"
-        fi
-                        }
-        zle-line-init () {
-            zle -K viins
-            printf "\033[6 q"
-                        }
-        zle-line-finish () {
-            printf "\033[2 q"
-                        }
-        zle -N zle-keymap-select
-        zle -N zle-line-init
-        zle -N zle-line-finish
+          # indicate mode by cursor shape
+          zle-keymap-select () {
+          if [ $KEYMAP = vicmd ]; then
+              printf "\033[2 q"
+          else
+              printf "\033[6 q"
+          fi
+                          }
+          zle-line-init () {
+              zle -K viins
+              printf "\033[6 q"
+                          }
+          zle-line-finish () {
+              printf "\033[2 q"
+                          }
+          zle -N zle-keymap-select
+          zle -N zle-line-init
+          zle -N zle-line-finish
 
-        DISABLE_AUTO_TITLE="true"
+          DISABLE_AUTO_TITLE="true"
 
-        function precmd() {
-          # echo -en "\e]2;$@\a"
-          print -Pn "\e]0;%~\a"
-        }
-      '';
-    };
+          function precmd() {
+            # echo -en "\e]2;$@\a"
+            print -Pn "\e]0;%~\a"
+          }
+        '';
+      in
+      {
+        enable = true;
+        autocd = true;
+        dotDir = ".config/zsh";
+        enableCompletion = true;
+        autosuggestion.enable = true;
+        syntaxHighlighting.enable = true;
+        defaultKeymap = "viins";
+        initContent = lib.mkMerge [
+          initExtraBeforeCompInit
+          initExtra
+        ];
+        #shellAliases = aliases;
+        # Plugins
+        plugins = [
+          # sfz-prompt
+          {
+            name = "sfz";
+            src = builtins.fetchGit {
+              url = "https://github.com/teu5us/sfz-prompt.zsh";
+              rev = "1419b468675c367fa44cd14e1bf86997f2ada5fc";
+            };
+          }
+          {
+            name = "fzf-tab";
+            src = builtins.fetchGit {
+              url = "https://github.com/Aloxaf/fzf-tab";
+              rev = "c5c6e1d82910fb24072a10855c03e31ea2c51563";
+            };
+          }
+        ];
+      };
 
     autojump.enable = true;
 
@@ -347,7 +356,7 @@ in
     };
 
     zed-editor = {
-      enable = true;
+      enable = false;
       userKeymaps = [
         {
           context = "VimControl && !menu";
@@ -574,6 +583,7 @@ in
       wlrctl
       xdg-utils
       yaml-language-server
+      zed-editor-fhs
       zen-browser.packages.x86_64-linux.default
       zoom-us
     ];
