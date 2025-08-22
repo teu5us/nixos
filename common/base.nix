@@ -71,6 +71,7 @@
   security = {
     sudo.enable = true;
     polkit.enable = true;
+    rtkit.enable = true;
   };
 
   environment.systemPackages = with pkgs; [

@@ -107,6 +107,8 @@ in
         background_opacity = "0.9";
         editor = "vi";
         enabled_layouts = "tall,fat,grid,stack";
+        allow_remote_control = "socket-only";
+        listen_on = "unix:/tmp/kitty";
       };
       shellIntegration = {
         enableBashIntegration = true;
@@ -401,15 +403,39 @@ in
               };
             };
           };
-          # rust-analyzer = {
-          #   binary = {
-          #     path = "${pkgs.rust-analyzer}/bin/rust-analyzer";
-          #     args = [ ];
-          #   };
-          # };
+          rust-analyzer = {
+            initialization_options = {
+              inlay_hints = {
+                maxLength = null;
+                lifetimeElisionHints = {
+                  enable = "skip_trivial";
+                  useParameterNames = true;
+                };
+                closureReturnTypeHints = {
+                  enable = "always";
+                };
+              };
+            };
+          };
         };
         inlay_hints = {
           enable = true;
+          show_type_hints = true;
+          show_parameter_hints = true;
+          show_other_hints = true;
+          show_background = false;
+          edit_debounce_ms = 700;
+          scroll_debounce_ms = 50;
+          toggle_on_modifiers_press = null;
+        };
+        diagnostics = {
+          inline = {
+            enabled = true;
+          };
+          update_with_cursor = true;
+        };
+        project_panel = {
+          show_diagnostics = "all";
         };
       };
     };
@@ -512,10 +538,10 @@ in
       sushi
       gopls
       graphviz
+      heroic
       hyprlayout
       hyprshot
       imagemagickBig
-      insomnia
       jq
       lz4json
       marksman
@@ -531,6 +557,7 @@ in
       pavucontrol
       pgadmin4-desktopmode
       poetry
+      postman
       pyprland
       rust-analyzer
       sqlite

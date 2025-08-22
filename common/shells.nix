@@ -46,7 +46,8 @@ in
 
   environment.pathsToLink = [ "/share/zsh" ];
   environment.sessionVariables = {
-    PATH = "$PATH:$HOME/.local/bin";
+    PATH = "$PATH:$HOME/.local/bin:$HOME/go/bin";
     PROMPT_SFZ_CHAR = "λ";
+    NIXOS_OZONE_WL = 1;
   };
 }

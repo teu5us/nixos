@@ -7,16 +7,28 @@
 
   xdg.portal = {
     enable = true;
+    xdgOpenUsePortal = true;
     config = {
-      config.default = [
-        "hyprland"
-        "gtk"
-        "kde"
-      ];
+      common = {
+        default = [
+          "gtk"
+          "kde"
+        ];
+        "org.freedesktop.impl.portal.Screencast" = "hyprland";
+        "org.freedesktop.impl.portal.Screenshot" = "hyprland";
+      };
+      hyprland = {
+        default = [
+          "hyprland"
+          "gtk"
+          "kde"
+        ];
+        "org.freedesktop.impl.portal.Screencast" = "hyprland";
+        "org.freedesktop.impl.portal.Screenshot" = "hyprland";
+      };
     };
     wlr.enable = true;
     extraPortals = with pkgs; [
-      xdg-desktop-portal
       xdg-desktop-portal-hyprland
       xdg-desktop-portal-gtk
       xdg-desktop-portal-kde
