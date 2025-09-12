@@ -18,4 +18,22 @@
   };
 
   services.thermald.enable = true;
+  services.power-profiles-daemon.enable = false;
+  services.auto-cpufreq = {
+    enable = true;
+    settings = {
+      battery = {
+        governor = "powersave";
+        turbo = "never";
+      };
+      charger = {
+        governor = "performance";
+        turbo = "autor";
+      };
+    };
+  };
+  services.system76-scheduler = {
+    enable = true;
+    useStockConfig = true;
+  };
 }

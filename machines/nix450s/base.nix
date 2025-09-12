@@ -9,7 +9,7 @@
   boot.kernelParams = [
     "pcie_aspm=force"
     "usbcore.autosuspend=1"
-    "intel_pstate=active"
+    "intel_pstate=disable"
     "intel_iommu=on"
     "iommu=pt"
     "acpi_backlight=video"
@@ -65,7 +65,7 @@
   };
 
   powerManagement = {
-    cpuFreqGovernor = "performance";
+    cpuFreqGovernor = "powersave";
     powertop.enable = true;
   };
 
