@@ -6,6 +6,7 @@
     allowedTCPPorts = [
       22
       22000
+      50053
     ];
     allowedUDPPorts = [
       22000
