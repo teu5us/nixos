@@ -7,6 +7,9 @@
       "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
     ];
     resumeDevice = "/dev/disk/by-uuid/8f21405c-a330-4cf3-a9f8-6a5e96653adb";
+    extraModprobeConfig = ''
+      options nvidia NVreg_RegistryDwords="PowerMizerEnable=0x1; PowerMizerLevel=0x3; PowerMizerDefault=0x3; PowerMizerDefaultAC=0x3"
+    '';
   };
 
   hardware = {
